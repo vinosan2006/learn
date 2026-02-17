@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home | LearnHub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">LearnHub</div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/courses">Courses</a>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </nav>
+    </div>
+
+    <div class="hero">
+        <h1>What do you want to learn today?</h1>
+        <input type="text" placeholder="Search for courses...">
+        
+        <div class="buttons">
+            <button>Python</button>
+            <button>Machine Learning</button>
+            <button>Web Development</button>
+        </div>
+    </div>
+
+</body>
+</html>
