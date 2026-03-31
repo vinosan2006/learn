@@ -5,26 +5,53 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-
-    <div class="navbar">
-        <div class="logo">LearnHub</div>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/courses">Courses</a>
-            <a href="/logout" class="logout-btn">Logout</a>
-        </nav>
+    <!-- Sidebar -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+        <a href="#">My Profile</a>
+        <a href="{{ url_for('course.enrolled') }}">Enrolled Courses (My Progress)</a>
+        <a href="{{ url_for('course.jobs') }}">Job Roles</a>
+        <a href="#">Settings</a>
+        <a href="{{ url_for('auth.logout') }}">Logout</a>
     </div>
 
-    <div class="hero">
-        <h1>What do you want to learn today?</h1>
-        <input type="text" placeholder="Search for courses...">
-        
-        <div class="buttons">
-            <button>Python</button>
-            <button>Machine Learning</button>
-            <button>Web Development</button>
+    <div id="main" class="page-container">
+        <div class="navbar">
+            <div class="navbar-left">
+                <span class="hamburger" onclick="openNav()">&#9776;</span>
+                <div class="logo">LearnHub</div>
+            </div>
+            <nav>
+                <a href="{{ url_for('auth.home') }}">Home</a>
+                <a href="{{ url_for('course.courses') }}">Courses</a>
+                <a href="{{ url_for('course.enrolled') }}">My Progress</a>
+                <a href="{{ url_for('course.jobs') }}">Job Roles</a>
+                <a href="{{ url_for('auth.logout') }}" class="logout-btn">Logout</a>
+            </nav>
+        </div>
+
+        <div class="hero">
+            <h1>What do you want to learn today?</h1>
+            
+            <form action="{{ url_for('course.courses') }}" method="GET" style="width: 100%; max-width: 600px; margin-bottom: 25px;">
+                <input type="text" name="q" placeholder="Search for courses..." style="width: 100%; padding: 16px 20px; border: none; border-radius: 30px; outline: none; font-size: 16px;">
+            </form>
+            
+            <div class="buttons">
+                <a href="{{ url_for('course.courses', q='Python') }}" class="pill-btn">Python</a>
+                <a href="{{ url_for('course.courses', q='Machine Learning') }}" class="pill-btn">Machine Learning</a>
+                <a href="{{ url_for('course.courses', q='Web') }}" class="pill-btn">Web Development</a>
+            </div>
         </div>
     </div>
 
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+    </script>
 </body>
 </html>

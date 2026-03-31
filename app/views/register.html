@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register | LearnHub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h2 class="logo" style="margin-bottom: 20px;">LearnHub Register</h2>
+            <form method="POST">
+                <input type="text" name="name" placeholder="Full Name" required class="input-field">
+                <input type="email" name="email" placeholder="Enter your email" required class="input-field">
+                <input type="password" name="password" placeholder="Enter password" required class="input-field">
+                <button type="submit" class="pill-btn" style="margin-top: 15px; width: 100%; border: none;">Register</button>
+            </form>
+            <p style="margin-top: 15px; font-size: 14px; color: #94a3b8;">
+                Already have an account? <a href="{{ url_for('auth.login') }}" style="color: #22c55e;">Login</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
